@@ -1,0 +1,334 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-size: 200% 200%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 1s ease;
+            animation: gradientShift 15s ease infinite;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+        
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); /* For Safari */
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 420px;
+            padding: clamp(20px, 5vw, 40px);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transform: translateY(0);
+            transition: all 0.5s ease;
+            margin: 0 auto;
+        }
+        
+        @media (hover: hover) {
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            }
+        }
+        
+        /* For small mobile screens */
+        @media (max-width: 380px) {
+            .card {
+                padding: 20px 15px;
+                border-radius: 18px;
+            }
+        }
+        
+        .search {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            padding: 5px 5px 5px 20px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        @media (max-width: 480px) {
+            .search {
+                padding: 5px 5px 5px 15px;
+            }
+        }
+        
+        .search:focus-within {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+        
+        @media (hover: hover) {
+            .search:focus-within {
+                transform: scale(1.02);
+            }
+        }
+        
+        .search input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            font-size: clamp(14px, 4vw, 16px);
+            width: 80%;
+            padding: 10px 0;
+        }
+        
+        .search input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .search button {
+            background: #fff;
+            width: clamp(38px, 10vw, 45px);
+            height: clamp(38px, 10vw, 45px);
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        @media (hover: hover) {
+            .search button:hover {
+                background: #f0f0f0;
+                transform: scale(1.1);
+            }
+        }
+        
+        .search button:active {
+            transform: scale(0.95);
+        }
+        
+        .search button i {
+            font-size: clamp(14px, 4vw, 16px);
+            transition: transform 0.3s ease;
+        }
+        
+        @media (hover: hover) {
+            .search button:hover i {
+                transform: rotate(15deg);
+            }
+        }
+        
+        .weather {
+            color: #fff;
+            padding: clamp(10px, 3vw, 20px) 0;
+            opacity: 0;
+            transform: scale(0.9);
+            animation: fadeIn 1s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .weather-icon {
+            width: clamp(80px, 25vw, 120px);
+            margin-bottom: clamp(8px, 3vw, 15px);
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .temp {
+            font-size: clamp(40px, 12vw, 64px);
+            font-weight: 700;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            margin-bottom: clamp(5px, 2vw, 10px);
+            position: relative;
+        }
+        
+        .city {
+            font-size: clamp(20px, 6vw, 28px);
+            font-weight: 500;
+            margin-bottom: clamp(20px, 6vw, 30px);
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            position: relative;
+            padding: 0 10px;
+            word-break: break-word;
+        }
+        
+        .city::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: clamp(30px, 10vw, 50px);
+            height: 2px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 2px;
+        }
+        
+        .details {
+            display: flex;
+            justify-content: space-around;
+            margin-top: clamp(20px, 6vw, 30px);
+            padding-top: clamp(15px, 4vw, 20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+            width: 50%;
+        }
+        
+        @media (hover: hover) {
+            .col:hover {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .col img {
+            width: clamp(25px, 8vw, 35px);
+            height: clamp(25px, 8vw, 35px);
+            margin-bottom: clamp(5px, 2vw, 10px);
+            filter: brightness(0) invert(1);
+            opacity: 0.8;
+        }
+        
+        .humidity, .wind {
+            font-size: clamp(18px, 5vw, 24px);
+            font-weight: 600;
+            margin-bottom: clamp(3px, 1vw, 5px);
+        }
+        
+        .col p:last-child {
+            font-size: clamp(12px, 3.5vw, 14px);
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Make wind speed text responsive */
+        .wind {
+            word-break: break-word;
+            padding: 0 5px;
+        }
+        
+        /* Background particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            animation: moveParticle 15s infinite linear;
+        }
+        
+        /* Reduce particles on smaller screens */
+        @media (max-width: 768px) {
+            .particle {
+                opacity: 0.6;
+            }
+        }
+        
+        @keyframes moveParticle {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100vw);
+                opacity: 0;
+            }
+        }
+        
+        /* Fix iOS backdrop-filter issues */
+        @supports (-webkit-touch-callout: none) {
+            .card {
+                background: rgba(255, 255, 255, 0.4);
+            }
+        }
+        
+        /* Support for reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            .weather-icon {
+                animation: none;
+            }
+            
+            body {
+                animation: none;
+            }
+            
+            .particle {
+                animation: none;
+                opacity: 0.3;
+            }
+        }
+
+.weather
+{
+    display: none;
+}
+.error
+{
+    text-align: center;
+    margin-left: 10px;
+    font-size: 14px;
+    margin-top: 10px;
+    display: none;
+    color:white;
+}
+.heading{
+    display: block;
+    color:#f0f0f0;
+    margin-bottom: 10px;
+}
